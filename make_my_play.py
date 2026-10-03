@@ -33,11 +33,11 @@ import piper_play  # noqa: E402  (uses the same parsing and pause rules)
 
 TEMP_DIR = HERE / "piper_temp_lines"
 
-# Rough speed, measured on Ceedric's own play: 188 lines (about 1,950
-# words) took about 2.5 minutes. Most of the time is Piper starting up
-# for each line, so the number of lines matters more than their length.
-SECONDS_PER_LINE = 0.55
-SECONDS_PER_WORD = 0.024
+# Average speed, measured on Ceedric's own play: 188 lines took about
+# 2.5 minutes, so roughly 0.8 seconds per line. Most of that time is
+# Piper starting up for each line, so the number of lines matters more
+# than how long each line is.
+SECONDS_PER_LINE = 150 / 188
 
 # A few voices to suggest when someone wants more. Any voice name from
 # https://rhasspy.github.io/piper-samples/ also works.
@@ -75,8 +75,7 @@ def heading(text):
 
 
 def about(seconds):
-    text = friendly_time(seconds)
-    return text if text == "a few seconds" else f"about {text}"
+    return f"about {friendly_time(seconds)}"
 
 
 def ask(prompt, default=None):
@@ -115,8 +114,8 @@ def ask_number(prompt, low, high, default=None):
 
 def friendly_time(seconds):
     seconds = max(0, int(round(seconds)))
-    if seconds < 10:
-        return "a few seconds"
+    if seconds <= 1:
+        return "1 second"
     if seconds < 60:
         return f"{seconds} seconds"
     minutes, secs = divmod(seconds, 60)
@@ -184,12 +183,17 @@ def clean_dragged_path(text):
 
 
 def pick_script():
-    heading("Step 1 of 4: Choose your script")
+    heading("Step 1 of 3: Choose your script")
     scripts = find_scripts()
     if scripts:
         say("I found these scripts in your folder:\n")
         for i, path in enumerate(scripts, 1):
-            say(f"  {i}. {path.relative_to(HERE)}")
+            try:
+                n = len(find_characters(path))
+                voices = f"   ({n} character{'' if n == 1 else 's'})"
+            except (OSError, UnicodeDecodeError):
+                voices = ""
+            say(f"  {i}. {path.relative_to(HERE)}{voices}")
         say("\nTo choose a script, type the number next to it, then press Enter.")
         say("(Or drag a different .txt file into this window, then press Enter.)")
     else:
@@ -299,7 +303,7 @@ def show_cast(cast, counts):
 
 
 def choose_cast(script_path, counts):
-    heading("Step 2 of 4: Choose a voice for each character")
+    heading("Step 2 of 3: Choose a voice for each character")
 
     names = list(counts)
     say(f"Your script has {len(names)} character"
@@ -388,7 +392,7 @@ def synthesize(voice, text, out_path):
 
 
 def make_audio(script_path, cast):
-    heading("Step 3 of 4: Getting ready")
+    heading("Step 3 of 3: Making your audio")
     piper_play.VOICES = dict(cast)
     items = piper_play.parse_script(script_path)
     speech = [it for it in items if it["type"] == "speech"]
@@ -397,42 +401,32 @@ def make_audio(script_path, cast):
         say("  NAME: what they say")
         return None
 
-    words = sum(len(it["text"].split()) for it in speech)
-    guess = len(speech) * SECONDS_PER_LINE + words * SECONDS_PER_WORD
+    guess = len(speech) * SECONDS_PER_LINE
     out_path = output_path_for(script_path)
-    say(f"{len(speech)} lines to speak ({words} words).")
-    say(f"Rough guess: {about(guess)}, but every computer is")
-    say("different. I'll give a better estimate once I've done a few lines.")
+    say(f"Your script has {len(speech)} lines to speak.")
+    say(f"Each line takes about {SECONDS_PER_LINE:.1f} seconds on average, so this")
+    say(f"should take {about(guess)}. (Slower computers take longer, and I'll")
+    say("update the estimate as I go.)")
     say(f"The audio will be saved as: {out_path.name}")
-    say("\nYou can leave this window open and do something else.")
-    say("To stop at any time, press Ctrl + C.")
-    if not ask_yes_no("\nStart now?"):
-        return None
-
-    heading("Step 4 of 4: Making your audio")
+    say("You can leave this window open and do something else.")
+    say("To stop at any time, press Ctrl + C.\n")
     if TEMP_DIR.exists():
         shutil.rmtree(TEMP_DIR)
     TEMP_DIR.mkdir()
 
     start = time.monotonic()
-    done_lines = done_words = 0
+    done_lines = 0
     entries = []  # ("speech", path) or ("silence", seconds)
     for i, item in enumerate(items):
         if item["type"] == "silence":
             entries.append(("silence", item["duration"]))
             continue
 
-        line_words = len(item["text"].split())
-        elapsed = time.monotonic() - start
+        # After a few lines, use this computer's own average speed.
+        per_line = SECONDS_PER_LINE
         if done_lines >= 3:
-            # Measure this computer's real speed and use it.
-            rate = elapsed / (done_lines * SECONDS_PER_LINE
-                              + done_words * SECONDS_PER_WORD)
-            left = rate * ((len(speech) - done_lines) * SECONDS_PER_LINE
-                           + (words - done_words) * SECONDS_PER_WORD)
-            when = f"{about(left)} left"
-        else:
-            when = "measuring speed..."
+            per_line = (time.monotonic() - start) / done_lines
+        when = f"{about((len(speech) - done_lines) * per_line)} left"
 
         preview = item["text"] if len(item["text"]) <= 50 else item["text"][:47] + "..."
         say(f"[{done_lines + 1}/{len(speech)}] {when}  |  "
@@ -442,7 +436,6 @@ def make_audio(script_path, cast):
         if synthesize(cast[item["character"]], item["text"], path):
             entries.append(("speech", path))
         done_lines += 1
-        done_words += line_words
 
     first = next((p for kind, p in entries if kind == "speech"), None)
     if first is None:

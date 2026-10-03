@@ -51,7 +51,8 @@ You can start with one and switch to the other any time. They make exactly the s
 | `Make My Play (Windows).bat` | Double-click this on Windows. |
 | `make_my_play.py` | The step-by-step helper the double-click files start. |
 | `piper_play.py` | The script that does the work. You'll only edit the top part, if at all. |
-| `examples/my-first-play.txt` | A tiny practice script so you can test everything works. |
+| `examples/my-first-play.txt` | A tiny practice script with 3 voices, so you can test everything works. |
+| `examples/five-voices.txt` | Another practice script with 5 voices, for when you've downloaded more. |
 | `examples/from-screenplay-to-piper.md` | Fifteen short before-and-after examples from a real screenplay, showing the choices you make by hand. |
 | `README.md` | This guide. |
 
@@ -198,7 +199,7 @@ A window opens and asks you a few questions, one at a time:
 
 - **Which script?** Type the number next to the script you want and press `Enter`, or drag your own `.txt` file into the window.
 - **Which voice for each character?** It finds every character in your script and suggests a voice for each one. Press `Enter` to keep a voice, or type the number of a different voice from the list. You never need to type character names. Two characters can share a voice. If you want more voices than you have, it can download them for you.
-- **How long will it take?** It gives you a rough guess, then a better one once it has done a few lines. For example, a play with about 190 lines (around 2,000 words) took about 2.5 minutes on my laptop. You can do something else while it works.
+- **How long will it take?** Before it starts, it tells you. Each line takes about 0.8 seconds on average, so a play with about 190 lines takes around 2.5 minutes. Once it has done a few lines, it measures your own computer's speed and keeps the "time left" up to date. You can do something else while it works.
 
 It remembers your cast in a small file next to your script (like `my-play.cast.json`), so next time you can just press `Enter`. It never overwrites an audio file you already made. It saves a new one with `-2` on the end instead.
 
