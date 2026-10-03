@@ -241,7 +241,7 @@ Use any plain text editor (TextEdit on Mac in **Format → Make Plain Text** mod
 | `B: Just me. And the river...` | `...` at the **end of a line** makes the voice trail off |
 | `...` on a line by itself | A short beat of silence (that's different from `...` at the end of a sentence) |
 | `A: Ohh-kayy...` | Spelled the way it should sound, stretched out and trailing off |
-| `A: And bones?` | A one-word line like `Bones?` can come out clipped, so a small word in front gives it something to lean on |
+| `A: These bones?` | A one-word line like `Bones?` can come out clipped, so a small word in front gives it something to lean on |
 
 For more, see [From screenplay to Piper script](examples/from-screenplay-to-piper.md).
 
