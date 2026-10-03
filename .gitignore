@@ -1,0 +1,15 @@
+# Audio you make (keep your art on your computer, not in the repo)
+*.wav
+piper_temp_lines/
+
+# Piper voice files (people download their own; they're large)
+*.onnx
+*.onnx.json
+
+# Computer clutter
+.DS_Store
+Thumbs.db
+__pycache__/
+
+# Saved casts from Make My Play
+*.cast.json

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Read the step-by-step guide
+    url: https://github.com/ceedric/piper-play#readme
+    about: Most answers are in the "If something goes wrong" section near the bottom.

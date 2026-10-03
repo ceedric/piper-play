@@ -1,0 +1,48 @@
+name: 🙋 I'm stuck and need help
+description: Something didn't work, or a step was confusing. No question is too small.
+title: "Help: "
+labels: ["help"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for asking. Getting stuck is a normal part of learning this, and it helps me make the guide better.
+        Fill in what you can. It's okay to leave things blank.
+  - type: dropdown
+    id: computer
+    attributes:
+      label: What kind of computer are you using?
+      options:
+        - Mac
+        - Windows
+        - Linux
+        - I'm not sure
+  - type: dropdown
+    id: step
+    attributes:
+      label: Which part of the guide were you on?
+      options:
+        - Part 1, opening the terminal
+        - Part 2, installing Python
+        - Part 3, making a project folder
+        - Part 4, installing Piper
+        - Part 5, downloading voices
+        - Part 6, making your first performance
+        - Part 7, writing my own script
+        - Part 8, choosing my cast
+        - Something else
+  - type: textarea
+    id: typed
+    attributes:
+      label: What did you type?
+      description: Copy and paste it if you can.
+      render: shell
+  - type: textarea
+    id: saw
+    attributes:
+      label: What did you see?
+      description: Copy and paste the message, or describe it. A screenshot is fine too (drag it into this box).
+  - type: textarea
+    id: anything
+    attributes:
+      label: Anything else you'd like to tell me?

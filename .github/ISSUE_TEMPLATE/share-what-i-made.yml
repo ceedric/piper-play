@@ -1,0 +1,18 @@
+name: 🎭 Share what I made
+description: Made something with Piper Play? I'd love to hear it.
+title: "Made with Piper Play: "
+labels: ["showcase"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: What's your piece called?
+  - type: textarea
+    id: about
+    attributes:
+      label: Tell me about it
+      description: What is it, and is there a link where people can hear or see it?
+  - type: textarea
+    id: tips
+    attributes:
+      label: Any tips you learned along the way? (optional)
