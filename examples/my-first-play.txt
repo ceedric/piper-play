@@ -1,10 +1,14 @@
 NARRATOR: The stage is dark. Somewhere, water is moving.
 A: Hello? Is anyone here?
-...
-B: Just me. And the river.
 ___
+B: Just me. And the river...
+...
+A: Ohh-kayy...
 A: Have you been here long?
+___
 B: Longer than the stones. Shorter than the stars.
+A: And bones?
+B: Older than bones, even.
 SCENE BREAK
 NARRATOR: Morning. The light comes back slowly.
-A: I think I understand now.
+A: I think I understand now...

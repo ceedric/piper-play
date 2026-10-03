@@ -501,7 +501,8 @@ def main():
     out_path = make_audio(script_path, cast)
     if out_path and ask_yes_no("\nPlay it now?"):
         open_file(out_path)
-    say("\nThank you for making something.")
+    say("\nSee notes for more advanced tips and tricks:")
+    say("  examples/from-screenplay-to-piper.md")
 
 
 if __name__ == "__main__":
