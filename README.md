@@ -13,18 +13,18 @@ B: Just me. And the river.
 
 And Piper Play gives you back **one audio file** where every character has their own voice, with pauses where you asked for them.
 
-I'm Ceedric, an artist. I made this for my own performance work and I'm sharing it because the tools that helped me were shared with me first. 💛
+I'm Cedric, an un-disciplinary artist. I made this curious if I could go from written play with multiple characters in it to have it be read to me in different voices and I'm sharing it because the tools that helped me were already put out into the world and this is my breadcrumbs to find my way back to how it all started...
 
 <!-- VIDEO PLACEHOLDER: a short "hello, here's what this does" video (30-60 seconds), maybe with a clip of the finished audio. -->
 > 🎥 **Video: What this is and what it sounds like** *(coming soon)*
 
 ---
 
-## Before you start: a few honest words
+## Before you start:
 
 - **You don't need to be "a tech person."** If you can write a script and follow a recipe, you can do this.
 - **Nothing here costs money, and nothing here watches you.** Piper runs entirely on your own computer. Your words are not uploaded anywhere. No account, no subscription, no AI company reading your script.
-- **You can't break your computer by following these steps.** The worst thing that usually happens is an error message, and error messages are just the computer saying "I didn't understand." We'll go through the common ones together below.
+- **You can't break your computer by following these steps.** The worst thing that usually happens is an error message, and error messages are just the computer saying "I didn't understand." We'll go through the common ones together below. (One common one is Mac not letting you open a file from an unidentified developer, me)
 - **Go at your own pace.** Take breaks. Come back tomorrow. The steps will still be here.
 
 ### What is "open source"?
@@ -63,7 +63,7 @@ You can start with one and switch to the other any time. They make exactly the s
 <!-- VIDEO PLACEHOLDER: Ceedric opening the terminal for the first time and typing one harmless command. -->
 > 🎥 **Video: Opening the terminal together** *(coming soon)*
 
-The **terminal** is a window where you type instructions to your computer instead of clicking. It looks plain and a bit old-fashioned. That's okay. It's just a text conversation with your computer.
+The **terminal** is a window where you type instructions to your computer instead of clicking. It looks plain and a bit old-fashioned. That's okay. It's just how we communicate in "computer speak".
 
 **How to open it:**
 
