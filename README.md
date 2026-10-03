@@ -242,6 +242,7 @@ Use any plain text editor (TextEdit on Mac in **Format → Make Plain Text** mod
 | `...` on a line by itself | A short beat of silence (that's different from `...` at the end of a sentence) |
 | `A: Ohh-kayy...` | Spelled the way it should sound, stretched out and trailing off |
 | `A: These bones?` | A one-word line like `Bones?` can come out clipped, so a small word in front gives it something to lean on |
+| `A: Hullo? N E 1 hear?` | Sounds just like the opening line, `Hello? Is anyone here?`, but it's written completely differently. Piper reads letters, numbers and sounds, not meaning, so you can spell for the ear however you like |
 
 For more, see [From screenplay to Piper script](examples/from-screenplay-to-piper.md).
 
