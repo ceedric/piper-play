@@ -80,19 +80,22 @@ def about(seconds):
 
 
 def ask(prompt, default=None):
-    """Ask a question. Pressing Enter gives the default."""
-    hint = f" [{default}]" if default else ""
+    """Ask a question, then wait for an answer on the "> " line.
+    Pressing Enter on its own gives the default, if there is one."""
+    if prompt:
+        say(prompt)
     try:
-        answer = input(f"{prompt}{hint}: ").strip()
+        answer = input("> ").strip()
     except EOFError:
         answer = ""
     return answer or (default or "")
 
 
 def ask_yes_no(prompt, default=True):
-    hint = "Y/n" if default else "y/N"
+    enter_means = "yes" if default else "no"
     while True:
-        answer = ask(f"{prompt} ({hint})").lower()
+        answer = ask(f"{prompt}\n(Type y for yes or n for no, then press Enter."
+                     f" Pressing Enter on its own means {enter_means}.)").lower()
         if not answer:
             return default
         if answer in ("y", "yes"):
@@ -107,7 +110,7 @@ def ask_number(prompt, low, high, default=None):
         answer = ask(prompt, str(default) if default else None)
         if answer.isdigit() and low <= int(answer) <= high:
             return int(answer)
-        say(f"  Please type a number from {low} to {high}.")
+        say(f"  Please type one of the numbers from the list ({low} to {high}).")
 
 
 def friendly_time(seconds):
@@ -187,14 +190,14 @@ def pick_script():
         say("I found these scripts in your folder:\n")
         for i, path in enumerate(scripts, 1):
             say(f"  {i}. {path.relative_to(HERE)}")
-        say("\nType a number, or drag a different .txt file into this window")
-        say("and press Enter.")
+        say("\nTo choose a script, type the number next to it, then press Enter.")
+        say("(Or drag a different .txt file into this window, then press Enter.)")
     else:
         say("I didn't find any .txt scripts in this folder.")
         say("Drag your script file into this window and press Enter.")
 
     while True:
-        answer = ask("Your choice")
+        answer = ask("")
         if answer.isdigit() and scripts and 1 <= int(answer) <= len(scripts):
             return scripts[int(answer) - 1]
         if answer:
@@ -203,7 +206,7 @@ def pick_script():
                 return path
             say(f"  I couldn't find a file at: {path}")
         else:
-            say("  Please type a number or drag in a file.")
+            say("  Please type the number next to your script, then press Enter.")
 
 
 # ---------------------------------------------------------------------
@@ -254,9 +257,10 @@ def offer_downloads(have):
         for i, (name, about) in enumerate(SUGGESTED_VOICES, 1):
             mark = " (already have it)" if name in have else ""
             say(f"  {i:2}. {name:36} {about}{mark}")
-        say("\nType a number, or type any voice name from the samples page.")
-        say("Press Enter on its own when you're done.")
-        answer = ask("Voice to download")
+        say("\nTo download a voice, type the number next to it, then press Enter.")
+        say("(You can also type the full name of any voice from the samples page.)")
+        say("When you have all the voices you want, just press Enter.")
+        answer = ask("")
         if not answer:
             return downloaded_voices()
         if answer.isdigit() and 1 <= int(answer) <= len(SUGGESTED_VOICES):
@@ -334,11 +338,18 @@ def choose_cast(script_path, counts):
         say("\nYour voices:\n")
         for i, voice in enumerate(have, 1):
             say(f"  {i}. {voice}")
-        say("\nFor each character, type a voice number, or press Enter to")
-        say("keep the suggestion. Two characters can use the same number.\n")
+        say("\nNow I'll go through your characters one at a time and show the")
+        say("voice I picked for each one. You don't need to type any names.")
+        say("  - To keep the voice, just press Enter.")
+        say("  - To change it, type the number of a different voice from the")
+        say("    list above, then press Enter.")
+        say("Two characters can share the same voice.")
         for name in names:
             default = have.index(cast[name]) + 1
-            pick = ask_number(f"  {name}", 1, len(have), default)
+            say(f"\n{name} ({counts[name]} lines) will use voice "
+                f"{default}: {cast[name]}")
+            pick = ask_number("Press Enter to keep it, or type a different "
+                              "voice number:", 1, len(have), default)
             cast[name] = have[pick - 1]
 
         say("\nYour cast:\n")

@@ -196,8 +196,8 @@ Open your `piper-play` folder and double-click `my-first-play.wav`. You're liste
 
 A window opens and asks you a few questions, one at a time:
 
-- **Which script?** Pick one from the list by number, or drag your own `.txt` file into the window.
-- **Which voice for each character?** It finds every character in your script and suggests a voice for each one. Type a number to change it, or press `Enter` to keep it. Two characters can share a voice. If you want more voices than you have, it can download them for you.
+- **Which script?** Type the number next to the script you want and press `Enter`, or drag your own `.txt` file into the window.
+- **Which voice for each character?** It finds every character in your script and suggests a voice for each one. Press `Enter` to keep a voice, or type the number of a different voice from the list. You never need to type character names. Two characters can share a voice. If you want more voices than you have, it can download them for you.
 - **How long will it take?** It gives you a rough guess, then a better one once it has done a few lines. For example, a play with about 190 lines (around 2,000 words) took about 2.5 minutes on my laptop. You can do something else while it works.
 
 It remembers your cast in a small file next to your script (like `my-play.cast.json`), so next time you can just press `Enter`. It never overwrites an audio file you already made. It saves a new one with `-2` on the end instead.
