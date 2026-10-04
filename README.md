@@ -29,7 +29,7 @@ I'm Cedric, an un-disciplinary artist. I made this curious if I could go from wr
 
 ### What is "open source"?
 
-Open source means the people who made a tool let everyone see how it works, use it, change it, and share it. Piper was made by people who wanted good voices to be free for everyone. This script is open source too. If you change it to fit your work, that's not breaking the rules, that's the whole point. 🌱
+Open source means the people who made a tool let everyone see how it works, use it, change it, and share it. Piper was made by people who wanted good voices to be free for everyone. This script is open source too. If you change it to fit your work, that's super exciting to me. 🌱
 
 ---
 
@@ -37,9 +37,9 @@ Open source means the people who made a tool let everyone see how it works, use 
 
 **🖱️ The double-click way (least typing).** Install Python once (Part 2), download this project as a ZIP and unzip it, then double-click **Make My Play**. It walks you through everything else with simple questions: it installs Piper for you, helps you download voices, asks which voice each character should have, and tells you roughly how long it will take. Jump to [The double-click way](#the-double-click-way).
 
-**⌨️ The terminal way.** Parts 1 to 8 below walk you through doing it by typing commands. It takes a little longer to learn, and it's worth it: once the terminal stops feeling scary, a lot of other free tools open up to you. The videos are here to keep you company.
+**⌨️ The terminal way.** Parts 1 to 8 below walk you through doing it by typing commands. It takes a little longer to learn, and it's worth it: once going into terminal stops feeling like you're getting hacked or destroying your computer, a lot of other free tools open up to you. The videos are here for visually oriented folks like myself who feel really unsure otherwise.
 
-You can start with one and switch to the other any time. They make exactly the same audio.
+You can start with one and switch to the other any time. They'll output exactly the same audio.
 
 ---
 
@@ -58,12 +58,12 @@ You can start with one and switch to the other any time. They make exactly the s
 
 ---
 
-## Part 1: Meeting the terminal
+## Part 1: Meeting the terminal (a little intro just because I'm going to assume you didn't watch "GitHub for Poets".
 
 <!-- VIDEO PLACEHOLDER: Ceedric opening the terminal for the first time and typing one harmless command. -->
 > 🎥 **Video: Opening the terminal together** *(coming soon)*
 
-The **terminal** is a window where you type instructions to your computer instead of clicking. It looks plain and a bit old-fashioned. That's okay. It's just how we communicate in "computer speak".
+The **terminal** is a window where you type instructions to your computer instead of clicking. It looks plain and a bit raw and old-fashioned. It's amazing we still can make our own programs with this, and you just have to feed it specific commands in its "computer speak".
 
 **How to open it:**
 
@@ -88,11 +88,11 @@ The computer says `hello` back. You just used the terminal. 🎉
 
 ---
 
-## Part 2: Install Python (only once)
+## Part 2: Install Python (only need to do this once)
 
 Piper and this script are written in a language called **Python**. You need it installed once.
 
-**Check if you already have it:**
+**Check if you already have it installed:**
 
 - **Mac / Linux:** `python3 --version`
 - **Windows:** `python --version`
