@@ -13,7 +13,7 @@ B: Just me. And the river.
 
 And Piper Play gives you back **one audio file** where every character has their own voice, with pauses where you asked for them.
 
-I'm Cedric, an un-disciplinary artist. I made this curious if I could go from written play with multiple characters in it to have it be read to me in different voices and I'm sharing it because the tools that helped me were already put out into the world and this is my breadcrumbs to find my way back to how it all started...
+I'm Cedric, an un-disciplinary artist. I made this curious if I could go from written play with multiple characters in it to have it be read to me in different voices and I'm sharing it because the tools that helped me were already put out into the world and these are my breadcrumbs to help me find my way back to how it all started...
 
 <!-- VIDEO PLACEHOLDER: a short "hello, here's what this does" video (30-60 seconds), maybe with a clip of the finished audio. -->
 > 🎥 **Video: What this is and what it sounds like** *(coming soon)*
